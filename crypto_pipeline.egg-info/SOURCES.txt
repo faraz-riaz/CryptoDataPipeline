@@ -1,0 +1,17 @@
+setup.py
+crypto_pipeline.egg-info/PKG-INFO
+crypto_pipeline.egg-info/SOURCES.txt
+crypto_pipeline.egg-info/dependency_links.txt
+crypto_pipeline.egg-info/requires.txt
+crypto_pipeline.egg-info/top_level.txt
+src/__init__.py
+src/config.py
+src/main.py
+src/ingestion/__init__.py
+src/ingestion/coingecko_client.py
+src/ingestion/data_validator.py
+src/utils/__init__.py
+src/utils/logger.py
+tests/__init__.py
+tests/test_coingecko_client.py
+tests/test_data_validator.py

@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Name: crypto-pipeline
+Version: 0.1
+Requires-Dist: requests==2.31.0
+Requires-Dist: python-dotenv==1.0.0
+Requires-Dist: pandas==2.1.0
+Requires-Dist: pytest==7.4.0
+Requires-Dist: black==23.7.0
+Requires-Dist: pylint==2.17.5
+Requires-Dist: logging==0.4.9.6
