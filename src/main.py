@@ -5,6 +5,7 @@ from src.ingestion.data_validator import DataValidator
 from src.storage.local_storage import LocalStorage
 from src.config import Config
 from src.utils.logger import setup_logger
+from src.streaming.kafka_producer import CryptoProducer
 
 logger = setup_logger(__name__)
 
@@ -16,6 +17,7 @@ def main():
     client = CoinGeckoClient()
     validator = DataValidator()
     storage = LocalStorage()
+    producer = CryptoProducer()
     
     while True:
         try:
@@ -32,6 +34,10 @@ def main():
             storage.store_data(validated_df)
             
             logger.info(f"Successfully processed and stored {len(validated_df)} records")
+            
+            producer.send_data(validated_df)
+            
+            logger.info(f"Producer sent {len(validated_df)} records")
             
             # Wait for next update interval
             time.sleep(Config.UPDATE_INTERVAL)

@@ -13,6 +13,8 @@ setup(
         'black==23.7.0',
         'pylint==2.17.5',
         'logging==0.4.9.6',
-        'pyarrow==18.1.0'
+        'pyarrow==18.1.0',
+        'apache-airflow==2.10.4',
+        'kafka==1.3.5'
     ]
 )
