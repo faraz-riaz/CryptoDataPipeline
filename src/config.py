@@ -17,3 +17,10 @@ class Config:
     LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
     LOG_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
     LOG_FILE = "logs/crypto_pipeline.log"
+    
+    # Kafka Configuration
+    KAFKA_BROKER = 'localhost:9092'
+    KAFKA_TOPIC = 'crypto-prices'
+    
+    # Alert thresholds
+    PRICE_CHANGE_THRESHOLD = 5.0  # 5% price change alert

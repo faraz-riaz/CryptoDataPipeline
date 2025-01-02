@@ -3,20 +3,21 @@ import time
 from src.ingestion.coingecko_client import CoinGeckoClient
 from src.ingestion.data_validator import DataValidator
 from src.storage.local_storage import LocalStorage
+from src.streaming.kafka_producer import CryptoProducer
 from src.config import Config
 from src.utils.logger import setup_logger
-from src.streaming.kafka_producer import CryptoProducer
+from src.storage.bigquery_storage import BigQueryStorage
 
 logger = setup_logger(__name__)
 
 def main():
     """
-    Main function to run the data ingestion pipeline.
-    Fetches cryptocurrency data, validates it, and stores it locally.
+    Main function to run the data pipeline
     """
     client = CoinGeckoClient()
     validator = DataValidator()
     storage = LocalStorage()
+    bq_storage = BigQueryStorage()
     producer = CryptoProducer()
     
     while True:
@@ -32,12 +33,13 @@ def main():
             # Store the validated data
             logger.info("Storing data...")
             storage.store_data(validated_df)
+            bq_storage.store_data(validated_df)
             
-            logger.info(f"Successfully processed and stored {len(validated_df)} records")
-            
+            # Send to Kafka
+            logger.info("Sending to Kafka...")
             producer.send_data(validated_df)
             
-            logger.info(f"Producer sent {len(validated_df)} records")
+            logger.info(f"Successfully processed {len(validated_df)} records")
             
             # Wait for next update interval
             time.sleep(Config.UPDATE_INTERVAL)
