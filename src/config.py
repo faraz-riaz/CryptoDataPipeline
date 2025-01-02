@@ -24,3 +24,7 @@ class Config:
     
     # Alert thresholds
     PRICE_CHANGE_THRESHOLD = 5.0  # 5% price change alert
+    
+    # BigQuery Table Names
+    BQ_INPUT_TABLE = "crypto_data.price_data"
+    BQ_OUTPUT_TABLE = "crypto_data.daily_metrics"
