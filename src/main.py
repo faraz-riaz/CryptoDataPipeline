@@ -8,6 +8,9 @@ from src.config import Config
 from src.utils.logger import setup_logger
 from src.storage.bigquery_storage import BigQueryStorage
 
+from dotenv import load_dotenv
+load_dotenv()
+
 logger = setup_logger(__name__)
 
 def main():

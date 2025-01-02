@@ -1,6 +1,9 @@
 # src/analytics/data_verification.py
+from dotenv import load_dotenv
 from google.cloud import bigquery
 from src.utils.logger import setup_logger
+
+load_dotenv()
 
 logger = setup_logger(__name__)
 
