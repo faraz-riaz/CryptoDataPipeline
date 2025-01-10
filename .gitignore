@@ -2,3 +2,6 @@
 .env
 /data
 credential.json
+.aidigestignore
+/node_modules
+codebase.md

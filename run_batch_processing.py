@@ -13,7 +13,7 @@ def main():
     Run the batch processing Spark job.
     """
     try:
-        processor = SparkProcessor()
+        processor = SparkProcessor(local_mode=True)
         daily_metrics, volatility = processor.analyze_historical_data()
         processor.save_metrics(daily_metrics, volatility)
     except Exception as e:
